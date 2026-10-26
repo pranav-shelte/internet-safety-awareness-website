@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CyberSafe - Internet Safety Awareness</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f8fc;
+    color: #243247;
+    line-height: 1.6;
+}
+
+header {
+    background: #123c69;
+    color: white;
+    padding: 18px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+header h1 {
+    font-size: 27px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 7px;
+}
+
+nav a:hover {
+    color: #ffd166;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 7px;
+    padding: 11px 17px;
+    font-size: 15px;
+    font-weight: bold;
+    background: #087f8c;
+    color: white;
+    margin: 5px 3px;
+}
+
+button:hover {
+    background: #05616b;
+}
+
+.hero {
+    background: linear-gradient(135deg, #123c69, #087f8c);
+    color: white;
+    text-align: center;
+    padding: 75px 20px;
+}
+
+.hero h2 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: 0 auto 20px;
+    font-size: 18px;
+}
+
+.hero button {
+    background: #ffd166;
+    color: #123c69;
+}
+
+section {
+    padding: 45px 6%;
+    scroll-margin-top: 15px;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #123c69;
+    font-size: 29px;
+}
+
+.section-intro {
+    text-align: center;
+    max-width: 750px;
+    margin: -10px auto 25px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 23px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #00000012;
+    border-top: 4px solid #087f8c;
+}
+
+.card h3 {
+    color: #123c69;
+    margin-bottom: 10px;
+}
+
+.icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.alternate {
+    background: #e8f2fa;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.stat-box {
+    background: #123c69;
+    color: white;
+    padding: 22px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.stat-box h3 {
+    font-size: 30px;
+}
+
+.quiz-box {
+    max-width: 750px;
+    margin: auto;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #00000012;
+}
+
+.progress-track {
+    background: #dce5ed;
+    height: 10px;
+    border-radius: 10px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+#progressBar {
+    background: #087f8c;
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s;
+}
+
+#options {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.option-button {
+    background: #e8f2fa;
+    color: #243247;
+    text-align: left;
+    border: 2px solid #d5e2ec;
+    padding: 13px;
+}
+
+.option-button:hover {
+    background: #d5eaf0;
+}
+
+.option-button:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+.correct {
+    color: #137333;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.incorrect {
+    color: #b3261e;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.tip-box {
+    background: white;
+    max-width: 750px;
+    margin: auto;
+    padding: 25px;
+    border-left: 5px solid #087f8c;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#certificate {
+    background: white;
+    color: #123c69;
+    border: 7px double #087f8c;
+    padding: 30px 15px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#certificate h2 {
+    color: #123c69;
+}
+
+input {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px;
+    border: 1px solid #9aabba;
+    border-radius: 7px;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.faq-item {
+    max-width: 800px;
+    margin: 10px auto;
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.faq-item summary {
+    cursor: pointer;
+    color: #123c69;
+    font-weight: bold;
+}
+
+.faq-item p {
+    padding-top: 10px;
+}
+
+.notice {
+    background: #fff4d6;
+    border-left: 5px solid #e5a000;
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 5px;
+}
+
+footer {
+    background: #123c69;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+footer a {
+    color: #ffd166;
+}
+
+#backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    font-size: 23px;
+    z-index: 10;
+}
+
+body.dark-mode {
+    background: #101820;
+    color: #eaf0f6;
+}
+
+body.dark-mode section h2,
+body.dark-mode .card h3,
+body.dark-mode .faq-item summary {
+    color: #9ee7ee;
+}
+
+body.dark-mode .alternate {
+    background: #182733;
+}
+
+body.dark-mode .card,
+body.dark-mode .quiz-box,
+body.dark-mode .tip-box,
+body.dark-mode .faq-item {
+    background: #223442;
+    color: #eaf0f6;
+}
+
+body.dark-mode .option-button {
+    background: #344957;
+    border-color: #506575;
+    color: white;
+}
+
+body.dark-mode input {
+    background: #223442;
+    color: white;
+}
+
+body.dark-mode #certificate {
+    background: white;
+    color: #123c69;
+}
+
+@media (max-width: 700px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .hero h2 {
+        font-size: 29px;
+    }
+
+    section {
+        padding: 35px 5%;
+    }
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #certificate,
+    #certificate * {
+        visibility: visible;
+    }
+
+    #certificate {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🛡️ CyberSafe</h1>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#learn">Learn</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#game">Game</a>
+        <a href="#tips">Safety Tips</a>
+        <a href="#help">Cybercrime Help</a>
+        <a href="#about">About</a>
+        <button onclick="toggleDarkMode()" id="darkButton">🌙 Dark Mode</button>
+    </nav>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section class="hero" id="home">
+    <h2>Stay Safe in the Digital World</h2>
+    <p>
+        Learn how to protect your personal information, identify online
+        scams, create strong passwords, and use the internet responsibly.
+    </p>
+    <button onclick="document.getElementById('quiz').scrollIntoView()">
+        Start Safety Quiz
+    </button>
+    <button onclick="document.getElementById('learn').scrollIntoView()">
+        Explore Safety Topics
+    </button>
+</section>
+
+<!-- STATISTICS -->
+<section>
+    <h2>Explore Cyber Safety</h2>
+    <p class="section-intro">
+        Learn important online safety skills through educational topics,
+        interactive activities, and a knowledge quiz.
+    </p>
+
+    <div class="stats">
+        <div class="stat-box">
+            <h3>10</h3>
+            <p>Quiz Questions</p>
+        </div>
+        <div class="stat-box">
+            <h3>6+</h3>
+            <p>Safety Topics</p>
+        </div>
+        <div class="stat-box">
+            <h3>1</h3>
+            <p>Interactive Safety Game</p>
+        </div>
+    </div>
+</section>
+
+<!-- LEARNING -->
+<section class="alternate" id="learn">
+    <h2>Learn About Internet Safety</h2>
+
+    <p class="section-intro">
+        Understand common online risks and the simple steps you can take
+        to protect yourself.
+    </p>
+
+    <div class="grid">
+        <div class="card">
+            <div class="icon">🔐</div>
+            <h3>Strong Passwords</h3>
+            <p>Use long, unique passwords for different accounts. A password manager can help you store them securely.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎣</div>
+            <h3>Phishing Awareness</h3>
+            <p>Be cautious of unexpected messages asking you to click links, share passwords, or provide financial details.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔑</div>
+            <h3>OTP Safety</h3>
+            <p>Never share an OTP, PIN, or password with another person, even if they claim to be a bank employee.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">👤</div>
+            <h3>Privacy Protection</h3>
+            <p>Avoid sharing your home address, passwords, financial information, or live location publicly.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📱</div>
+            <h3>Safe Downloads</h3>
+            <p>Download apps from trusted sources and review app permissions before allowing access to your data.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🤝</div>
+            <h3>Cyberbullying</h3>
+            <p>Do not participate in online harassment. Save evidence, block the offender, and report abusive behaviour.</p>
+        </div>
+    </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+    <h2>Internet Safety Quiz</h2>
+
+    <p class="section-intro">
+        Answer 10 questions to test your internet safety knowledge.
+        If you select an incorrect answer, an explanation will appear.
+    </p>
+
+    <div class="quiz-box">
+        <div id="quizStart">
+            <h3>Ready to test your knowledge?</h3>
+            <p>Choose the safest action in each situation.</p>
+            <button onclick="startQuiz()">Start Quiz</button>
+        </div>
+
+        <div id="quizGame" class="hidden">
+            <p id="progress"></p>
+
+            <div class="progress-track">
+                <div id="progressBar"></div>
+            </div>
+
+            <h3 id="question"></h3>
+
+            <div id="options"></div>
+
+            <p id="feedback" aria-live="polite"></p>
+
+            <button id="retryBtn" class="hidden" onclick="showQuestion()">
+                Try Again
+            </button>
+
+            <button id="nextBtn" class="hidden" onclick="nextQuestion()">
+                Next Question
+            </button>
+        </div>
+
+        <div id="result" class="hidden">
+            <h3>Quiz Completed!</h3>
+            <p id="finalScore"></p>
+            <p id="resultMessage"></p>
+            <button onclick="restartQuiz()">Try Again</button>
+            <button onclick="document.getElementById('certificateSection').scrollIntoView()">
+                Get Certificate
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- DAILY TIP -->
+<section class="alternate" id="dailyTip">
+    <h2>Safety Tip of the Day</h2>
+
+    <div class="tip-box">
+        <p id="dailyTipText">
+            Never share your OTP, PIN, or password with anyone.
+        </p>
+        <button onclick="nextSafetyTip()">Show Another Tip</button>
+    </div>
+</section>
+
+<!-- SAFETY GAME -->
+<section id="game">
+    <h2>Safe or Unsafe?</h2>
+
+    <p class="section-intro">
+        Read each situation and decide whether it is safe or unsafe.
+    </p>
+
+    <div class="quiz-box">
+        <p id="gameProgress"></p>
+        <h3 id="gameQuestion"></h3>
+
+        <button onclick="checkGameAnswer(true)">Safe</button>
+        <button onclick="checkGameAnswer(false)">Unsafe</button>
+
+        <p id="gameFeedback" aria-live="polite"></p>
+
+        <button id="gameNext" class="hidden" onclick="nextGameQuestion()">
+            Next Situation
+        </button>
+
+        <div id="gameResult" class="hidden">
+            <h3>Game Completed!</h3>
+            <p id="gameScore"></p>
+            <button onclick="restartGame()">Play Again</button>
+        </div>
+    </div>
+</section>
+
+<!-- SAFETY TIPS -->
+<section class="alternate" id="tips">
+    <h2>Important Internet Safety Tips</h2>
+
+    <div class="grid">
+        <div class="card">
+            <h3>1. Think Before Clicking</h3>
+            <p>Check suspicious links before opening them. Visit important websites by typing their official address yourself.</p>
+        </div>
+
+        <div class="card">
+            <h3>2. Enable Two-Factor Authentication</h3>
+            <p>Use an additional sign-in verification method wherever possible.</p>
+        </div>
+
+        <div class="card">
+            <h3>3. Update Your Devices</h3>
+            <p>Install software and security updates to fix known vulnerabilities.</p>
+        </div>
+
+        <div class="card">
+            <h3>4. Use Secure Wi-Fi</h3>
+            <p>Avoid sensitive financial activities on public Wi-Fi. Never ignore browser security warnings.</p>
+        </div>
+
+        <div class="card">
+            <h3>5. Verify Online Offers</h3>
+            <p>Be suspicious of unexpected prizes, urgent payment requests, and offers that seem too good to be true.</p>
+        </div>
+
+        <div class="card">
+            <h3>6. Report Suspicious Activity</h3>
+            <p>Keep relevant evidence and report suspected fraud or abuse to the appropriate authorities.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CERTIFICATE -->
+<section id="certificateSection">
+    <h2>Certificate Generator</h2>
+
+    <p class="section-intro">
+        Complete the quiz, enter your name, and generate a certificate
+        showing your quiz score.
+    </p>
+
+    <div class="quiz-box">
+        <label for="studentName"><strong>Enter your name:</strong></label>
+        <input type="text" id="studentName" placeholder="Enter full name" maxlength="70">
+
+        <button onclick="generateCertificate()">Generate Certificate</button>
+
+        <p id="certificateMessage" aria-live="polite"></p>
+
+        <div id="certificate" class="hidden">
+            <h2>🏆 Certificate of Achievement</h2>
+            <p>This certificate is presented to</p>
+            <h2 id="certificateName"></h2>
+            <p>for completing the</p>
+            <h3>Internet Safety Awareness Quiz</h3>
+            <p id="certificateScore"></p>
+            <p id="certificateDate"></p>
+            <p><strong>CyberSafe - Stay Safe Online!</strong></p>
+        </div>
+
+        <button id="printCertificate" class="hidden no-print"
+                onclick="window.print()">
+            Print / Save Certificate as PDF
+        </button>
+
+        <p class="notice">
+            This is a participation certificate generated by the website.
+            It is not an official qualification or independently verified award.
+        </p>
+    </div>
+</section>
+
+<!-- CYBERCRIME HELP -->
+<section class="alternate" id="help">
+    <h2>Cybercrime Help in India</h2>
+
+    <div class="card">
+        <h3>What should you do if you face online fraud?</h3>
+
+        <ol style="padding-left: 22px;">
+            <li>Contact your bank or payment provider immediately if money has been lost.</li>
+            <li>Preserve transaction details, messages, screenshots, and other relevant evidence.</li>
+            <li>Report suspected cybercrime through the official Indian cybercrime reporting portal.</li>
+            <li>For financial cyber fraud, call the national helpline <strong>1930</strong> as soon as possible.</li>
+            <li>Never share your OTP or pay someone who promises to recover your money for a fee.</li>
+        </ol>
+
+        <p style="margin-top: 15px;">
+            <strong>Official portal:</strong>
+            <a href="https://cybercrime.gov.in/" target="_blank" rel="noopener noreferrer">
+                National Cyber Crime Reporting Portal
+            </a>
+        </p>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <details class="faq-item">
+        <summary>What is internet safety?</summary>
+        <p>Internet safety means using online services carefully to protect your personal information, accounts, devices, and wellbeing.</p>
+    </details>
+
+    <details class="faq-item">
+        <summary>What is phishing?</summary>
+        <p>Phishing is an attempt to trick people into revealing sensitive information or opening harmful links by pretending to be trustworthy.</p>
+    </details>
+
+    <details class="faq-item">
+        <summary>Should I share my OTP with a caller?</summary>
+        <p>No. Never disclose your OTP, PIN, or password to callers or people messaging you.</p>
+    </details>
+
+    <details class="faq-item">
+        <summary>What should I do if I receive a suspicious link?</summary>
+        <p>Do not click it. Verify the sender independently and report or delete the message if appropriate.</p>
+    </details>
+
+    <details class="faq-item">
+        <summary>Does this website save my quiz score?</summary>
+        <p>No. This version calculates your score in your browser. It does not send quiz results to a server or store them in a shared database.</p>
+    </details>
+</section>
+
+<!-- ABOUT -->
+<section class="alternate" id="about">
+    <h2>About This Project</h2>
+
+    <div class="card">
+        <p>
+            <strong>Project Title:</strong> Internet Safety Awareness Among Students
+        </p>
+
+        <p>
+            This educational website aims to increase awareness among students
+            about cyber threats, online privacy, phishing, strong passwords,
+            cyberbullying, and responsible internet usage.
+        </p>
+
+        <p>
+            Students can learn about common online risks, complete an interactive
+            quiz, practise identifying safe and unsafe situations, and generate
+            a certificate based on their quiz result.
+        </p>
+
+        <p>
+            <strong>Technologies Used:</strong> HTML, CSS, and JavaScript.
+        </p>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <h2>Contact / Feedback</h2>
+
+    <div class="quiz-box">
+        <p>
+            Have suggestions for improving this educational website?
+            You can provide feedback using your project's Google Form.
+        </p>
+
+        <p class="notice">
+            To connect your own survey, replace the placeholder link below
+            with your Google Form's responder link.
+        </p>
+
+        <p>
+            <a id="surveyLink" href="#contact">
+                Add your Google Form link here
+            </a>
+        </p>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <p><strong>CyberSafe - Internet Safety Awareness</strong></p>
+    <p>Educational Field Project | B.Sc. Computer Science</p>
+    <p>Think Before You Click. Stay Safe Online.</p>
+    <p>&copy; <span id="year"></span> CyberSafe</p>
+</footer>
+
+<button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+        aria-label="Back to top">↑</button>
+
+<script>
+// QUIZ QUESTIONS
+const questions = [
+    {
+        question: "You receive an unexpected message asking you to click a link to claim a prize. What should you do?",
+        options: [
+            "Click the link immediately",
+            "Share the message with everyone",
+            "Avoid the link and verify the message",
+            "Enter your bank details"
+        ],
+        answer: 2,
+        explanation: "Unexpected prize messages may be phishing attempts. Do not click suspicious links or provide personal information."
+    },
+    {
+        question: "Which is the safest password practice?",
+        options: [
+            "Use 123456",
+            "Use the same password everywhere",
+            "Use your name and birth year",
+            "Use long, unique passwords"
+        ],
+        answer: 3,
+        explanation: "Long, unique passwords make it harder for attackers to access multiple accounts if one password is exposed."
+    },
+    {
+        question: "Should you share an OTP with a person who calls claiming to be from your bank?",
+        options: [
+            "Yes, if they sound professional",
+            "No, never share it",
+            "Only share it with strangers",
+            "Share it if they ask urgently"
+        ],
+        answer: 1,
+        explanation: "Never disclose your OTP, PIN, or password to callers or people messaging you."
+    },
+    {
+        question: "What should you do if someone bullies you online?",
+        options: [
+            "Send threats back",
+            "Publish their private information",
+            "Save evidence, block, and report them",
+            "Give them your password"
+        ],
+        answer: 2,
+        explanation: "Preserve evidence, block the person, and report abusive behaviour to the platform or a trusted adult."
+    },
+    {
+        question: "You receive an unexpected email attachment from an unknown sender. What is safest?",
+        options: [
+            "Open it immediately",
+            "Download and forward it",
+            "Disable your security software",
+            "Avoid opening it and verify the sender"
+        ],
+        answer: 3,
+        explanation: "Unexpected attachments may contain malware. Verify the sender before opening anything."
+    },
+    {
+        question: "Which information should you avoid sharing publicly?",
+        options: [
+            "Your OTP and passwords",
+            "Your bank details",
+            "Your home address",
+            "All of the above"
+        ],
+        answer: 3,
+        explanation: "Keep passwords, OTPs, financial information, and private personal details confidential."
+    },
+    {
+        question: "You notice an unauthorised transaction in your bank account. What should you do?",
+        options: [
+            "Ignore it",
+            "Contact your bank and report the fraud promptly",
+            "Share your OTP with a recovery agent",
+            "Delete all evidence"
+        ],
+        answer: 1,
+        explanation: "Contact your bank or payment provider immediately and report financial cyber fraud through official channels."
+    },
+    {
+        question: "An app requests access to contacts and location for no clear reason. What should you do?",
+        options: [
+            "Allow everything",
+            "Share your passwords",
+            "Review its permissions and necessity",
+            "Install more unknown apps"
+        ],
+        answer: 2,
+        explanation: "Review app permissions and only grant access that is necessary for the app's intended function."
+    },
+    {
+        question: "What should you do when using public Wi-Fi?",
+        options: [
+            "Perform every banking transaction without caution",
+            "Share passwords with nearby users",
+            "Ignore all browser warnings",
+            "Avoid sensitive transactions and use secure connections"
+        ],
+        answer: 3,
+        explanation: "Public Wi-Fi can carry risks. Avoid sensitive transactions when possible and pay attention to connection security."
+    },
+    {
+        question: "A message says your account will be blocked unless you enter your password through its link. What should you do?",
+        options: [
+            "Enter your password immediately",
+            "Verify through the official app or website",
+            "Send your password to the sender",
+            "Forward the link to friends"
+        ],
+        answer: 1,
+        explanation: "Urgent account warnings can be phishing attempts. Visit the official website or app independently instead of using the message link."
+    }
+];
+
+let current = 0;
+let score = 0;
+let answered = false;
+let quizFinished = false;
+
+function startQuiz() {
+    current = 0;
+    score = 0;
+    answered = false;
+    quizFinished = false;
+
+    document.getElementById("quizStart").classList.add("hidden");
+    document.getElementById("result").classList.add("hidden");
+    document.getElementById("quizGame").classList.remove("hidden");
+    document.getElementById("certificate").classList.add("hidden");
+    document.getElementById("printCertificate").classList.add("hidden");
+    document.getElementById("certificateMessage").textContent = "";
+
+    showQuestion();
+}
+
+function showQuestion() {
+    if (current >= questions.length) {
+        showResult();
+        return;
+    }
+
+    answered = false;
+
+    const q = questions[current];
+
+    document.getElementById("progress").textContent =
+        "Question " + (current + 1) + " of " + questions.length;
+
+    document.getElementById("progressBar").style.width =
+        (current / questions.length * 100) + "%";
+
+    document.getElementById("question").textContent = q.question;
+
+    const optionsBox = document.getElementById("options");
+    optionsBox.innerHTML = "";
+
+    document.getElementById("feedback").textContent = "";
+    document.getElementById("retryBtn").classList.add("hidden");
+    document.getElementById("nextBtn").classList.add("hidden");
+
+    q.options.forEach(function(option, index) {
+        const btn = document.createElement("button");
+        btn.className = "option-button";
+        btn.textContent = option;
+        btn.onclick = function() {
+            checkAnswer(index);
+        };
+        optionsBox.appendChild(btn);
+    });
+}
+
+function checkAnswer(selected) {
+    if (answered) return;
+
+    const q = questions[current];
+    const feedback = document.getElementById("feedback");
+    const buttons = document.querySelectorAll("#options button");
+
+    if (selected === q.answer) {
+        answered = true;
+        score++;
+
+        feedback.className = "correct";
+        feedback.textContent = "Correct! " + q.explanation;
+
+        buttons.forEach(function(btn) {
+            btn.disabled = true;
+        });
+
+        document.getElementById("nextBtn").classList.remove("hidden");
+    } else {
+        feedback.className = "incorrect";
+        feedback.textContent = "Not quite. Try again! Hint: " + q.explanation;
+
+        document.getElementById("retryBtn").classList.remove("hidden");
+    }
+}
+
+function nextQuestion() {
+    if (!answered) return;
+
+    current++;
+
+    if (current >= questions.length) {
+        showResult();
+    } else {
+        showQuestion();
+    }
+}
+
+function showResult() {
+    quizFinished = true;
+
+    document.getElementById("quizGame").classList.add("hidden");
+    document.getElementById("result").classList.remove("hidden");
+
+    document.getElementById("progressBar").style.width = "100%";
+
+    const percentage = Math.round((score / questions.length) * 100);
+
+    document.getElementById("finalScore").textContent =
+        "Your score: " + score + " out of " + questions.length +
+        " (" + percentage + "%)";
+
+    let message;
+
+    if (percentage >= 80) {
+        message = "Excellent! You have a strong understanding of internet safety.";
+    } else if (percentage >= 50) {
+        message = "Good effort! Review the safety tips to improve your knowledge.";
+    } else {
+        message = "Keep learning! Review the topics and try the quiz again.";
+    }
+
+    document.getElementById("resultMessage").textContent = message;
+}
+
+function restartQuiz() {
+    startQuiz();
+}
+
+// DAILY SAFETY TIP
+const safetyTips = [
+    "Never share your OTP, PIN, or password with anyone.",
+    "Use a different strong password for each important account.",
+    "Check a website address carefully before entering personal information.",
+    "Keep your phone, computer, browser, and apps updated.",
+    "Think before posting photos or personal details online.",
+    "Verify urgent money requests using a separate, trusted communication method.",
+    "Review app permissions and remove access that is not necessary.",
+    "Enable two-factor authentication on important accounts.",
+    "Avoid opening unexpected attachments from unknown senders.",
+    "Report online harassment and keep evidence when it is safe to do so."
+];
+
+let tipIndex = 0;
+
+function nextSafetyTip() {
+    tipIndex = (tipIndex + 1) % safetyTips.length;
+    document.getElementById("dailyTipText").textContent = safetyTips[tipIndex];
+}
+
+// SAFE OR UNSAFE GAME
+const gameQuestions = [
+    {
+        text: "You use a long, unique password for your email account.",
+        safe: true,
+        explanation: "Correct! A long, unique password helps protect your account."
+    },
+    {
+        text: "You share your OTP with a caller who claims to be from a bank.",
+        safe: false,
+        explanation: "Never share OTPs, PINs, or passwords with callers."
+    },
+    {
+        text: "You verify a suspicious message using the official website.",
+        safe: true,
+        explanation: "Correct! Verify messages through official channels."
+    },
+    {
+        text: "You download a file from an unknown suspicious link.",
+        safe: false,
+        explanation: "Unknown files may contain malware. Avoid suspicious downloads."
+    },
+    {
+        text: "You block and report someone who is harassing you online.",
+        safe: true,
+        explanation: "Correct! Blocking and reporting can help protect you."
+    },
+    {
+        text: "You post your home address and phone number publicly.",
+        safe: false,
+        explanation: "Avoid sharing private information publicly."
+    }
+];
+
+let gameIndex = 0;
+let gameScore = 0;
+let gameAnswered = false;
+let gameFinished = false;
+
+function showGameQuestion() {
+    if (gameIndex >= gameQuestions.length) {
+        finishGame();
+        return;
+    }
+
+    gameAnswered = false;
+
+    document.getElementById("gameProgress").textContent =
+        "Situation " + (gameIndex + 1) + " of " + gameQuestions.length;
+
+    document.getElementById("gameQuestion").textContent =
+        gameQuestions[gameIndex].text;
+
+    document.getElementById("gameFeedback").textContent = "";
+    document.getElementById("gameNext").classList.add("hidden");
+}
+
+function checkGameAnswer(userSaysSafe) {
+    if (gameAnswered || gameFinished) return;
+
+    gameAnswered = true;
+
+    const q = gameQuestions[gameIndex];
+    const feedback = document.getElementById("gameFeedback");
+
+    if (userSaysSafe === q.safe) {
+        gameScore++;
+        feedback.className = "correct";
+        feedback.textContent = "Correct! " + q.explanation;
+    } else {
+        feedback.className = "incorrect";
+        feedback.textContent = "Incorrect. " + q.explanation;
+    }
+
+    document.getElementById("gameNext").classList.remove("hidden");
+}
+
+function nextGameQuestion() {
+    if (!gameAnswered) return;
+
+    gameIndex++;
+
+    if (gameIndex >= gameQuestions.length) {
+        finishGame();
+    } else {
+        showGameQuestion();
+    }
+}
+
+function finishGame() {
+    gameFinished = true;
+
+    document.getElementById("gameQuestion").textContent = "Game completed!";
+    document.getElementById("gameProgress").textContent = "";
+    document.getElementById("gameFeedback").textContent = "";
+
+    document.getElementById("gameNext").classList.add("hidden");
+
+    document.getElementById("gameResult").classList.remove("hidden");
+
+    document.getElementById("gameScore").textContent =
+        "Your score: " + gameScore + " out of " + gameQuestions.length;
+}
+
+function restartGame() {
+    gameIndex = 0;
+    gameScore = 0;
+    gameAnswered = false;
+    gameFinished = false;
+
+    document.getElementById("gameResult").classList.add("hidden");
+
+    showGameQuestion();
+}
+
+// CERTIFICATE GENERATOR
+function generateCertificate() {
+    const name = document.getElementById("studentName").value.trim();
+    const message = document.getElementById("certificateMessage");
+
+    if (!name) {
+        message.textContent = "Please enter your name.";
+        return;
+    }
+
+    if (!quizFinished) {
+        message.textContent = "Please complete the quiz before generating your certificate.";
+        return;
+    }
+
+    const percentage = Math.round((score / questions.length) * 100);
+
+    document.getElementById("certificateName").textContent = name;
+    document.getElementById("certificateScore").textContent =
+        "Quiz Score: " + score + "/" + questions.length +
+        " (" + percentage + "%)";
+
+    document.getElementById("certificateDate").textContent =
+        "Date: " + new Date().toLocaleDateString();
+
+    document.getElementById("certificate").classList.remove("hidden");
+    document.getElementById("printCertificate").classList.remove("hidden");
+
+    message.textContent = "Your certificate is ready!";
+}
+
+// DARK MODE
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+
+    const enabled = document.body.classList.contains("dark-mode");
+
+    document.getElementById("darkButton").textContent =
+        enabled ? "☀️ Light Mode" : "🌙 Dark Mode";
+
+    try {
+        localStorage.setItem("cyberSafeDarkMode", enabled ? "on" : "off");
+    } catch (e) {
+        // The site can still work if browser storage is unavailable.
+    }
+}
+
+try {
+    if (localStorage.getItem("cyberSafeDarkMode") === "on") {
+        document.body.classList.add("dark-mode");
+        document.getElementById("darkButton").textContent = "☀️ Light Mode";
+    }
+} catch (e) {
+    // Ignore unavailable browser storage.
+}
+
+// BACK TO TOP
+document.getElementById("backToTop").style.display = "none";
+
+window.addEventListener("scroll", function() {
+    document.getElementById("backToTop").style.display =
+        window.scrollY > 300 ? "block" : "none";
+});
+
+// FOOTER YEAR
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// INITIALISE GAME
+showGameQuestion();
+</script>
+
+</body>
+</html>
